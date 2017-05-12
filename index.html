@@ -52,9 +52,8 @@
                         cData = pielsCopy.data;
                     for (var row = 0; row < height; row++) {
                         var i = row *width*4 + 4;
-                        for (var col = 1; col < width; col++) {
-                            var num = col *4,
-                                dy = MY - row,
+                        for (var col = 1; col < width; col++, i+=4) {
+                            var dy = MY - row,
                                 dx = MX - col,
                                 dd = dx * dx + dy * dy,
                                 d = Math.sqrt(dd),
@@ -68,15 +67,15 @@
 //                                debugger;
 //                                return;
                                 if (mx < width && my < height && mx > 0 && my > 0) {
-                                    data[i+num] = cData[moveNum];
-                                    data[i+num+1] = cData[moveNum+1];
-                                    data[i+num+2] = cData[moveNum+2];
-                                    data[i+num+3] = cData[moveNum+3];
+                                    data[i] = cData[moveNum];
+                                    data[i+1] = cData[moveNum+1];
+                                    data[i+2] = cData[moveNum+2];
+                                    data[i+3] = cData[moveNum+3];
                                 } else {
-                                    data[i+num] = 255;
-                                    data[i+num+1] = 255;
-                                    data[i+num+2] = 255;
-                                    data[i+num+3] = 255;
+                                    data[i] = 255;
+                                    data[i+1] = 255;
+                                    data[i+2] = 255;
+                                    data[i+3] = 255;
                                 }
 //                            } else {
 //                                data[i+num] = cData[i+num];
